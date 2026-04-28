@@ -1,1 +1,1 @@
-# Sistema de costeo - ProductIO
+# ProductIO - Sistema de Gestión de Producción
