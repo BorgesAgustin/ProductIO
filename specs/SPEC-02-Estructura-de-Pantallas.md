@@ -1,5 +1,7 @@
 # /specs/SPEC-02-Estructura-de-Pantallas.md
 
+**Autor: Briant Gauna**
+
 ## Objetivo
 
 Definir cómo deben construirse las pantallas.

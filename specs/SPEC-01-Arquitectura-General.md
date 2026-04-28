@@ -1,5 +1,7 @@
 # /specs/SPEC-01-Arquitectura-General.md
 
+**Autor: Briant Gauna**
+
 ## Objetivo
 
 Definir la arquitectura base del sistema.

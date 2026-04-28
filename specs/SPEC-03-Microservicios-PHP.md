@@ -1,5 +1,7 @@
 # /specs/SPEC-03-Microservicios-PHP.md
 
+**Autor: Briant Gauna**
+
 ## Objetivo
 
 Definir la comunicación entre frontend y backend.

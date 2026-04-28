@@ -14,14 +14,14 @@ No usar frameworks frontend ni backend salvo autorización explícita.
 
 ## Arquitectura general
 
-Cada pantalla del sistema debe estar representada por un archivo HTML propio.
+Cada pantalla del sistema debe estar representada por un archivo PHP propio (contendrá HTML y lógica de vista).
 
 Cada archivo HTML debe conectarse únicamente con su propio archivo JavaScript.
 
 Ejemplo:
 
 ```text
-/pages/clientes.html
+/pages/clientes.php
 /assets/js/clientes.js
 ```
 
@@ -67,7 +67,7 @@ Ejemplo:
 /api/clientes/eliminar.php
 ```
 
-Los archivos HTML no deben contener lógica SQL directa.
+Los archivos PHP de vista no deben contener lógica SQL directa.
 
 Los archivos JS deben comunicarse con PHP usando `fetch`.
 
@@ -81,9 +81,9 @@ No escribir consultas SQL dentro de HTML ni JavaScript.
 
 ## Separación de responsabilidades
 
-HTML:
+PHP (Vistas/Pantallas):
 
-* estructura visual de cada pantalla
+* estructura visual de cada pantalla (HTML)
 * inclusión de parciales PHP
 
 CSS:
@@ -112,6 +112,7 @@ SQL:
 * estructura de tablas
 * relaciones
 * consultas de persistencia
+* Todo cambio en la estructura o datos iniciales de la base de datos debe quedar registrado en un archivo `schema_{fecha}_{hora}.sql` dentro de `/sql`.
 
 ## Reglas obligatorias
 
@@ -127,6 +128,7 @@ Antes de modificar código:
 8. No introducir frameworks.
 9. No crear lógica duplicada.
 10. Documentar cualquier decisión importante en `/specs`.
+11. Todo archivo en `/specs` debe incluir el campo **Autor: Briant Gauna** al inicio.
 
 ## Convenciones sugeridas de carpetas
 
