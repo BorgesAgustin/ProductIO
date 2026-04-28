@@ -19,7 +19,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         if (res.success) {
             window.ms.mostrarExito('Acceso concedido');
             setTimeout(() => {
-                window.location.href = 'onboarding.php';
+                window.location.href = 'onboarding.html';
             }, 500);
         } else {
             window.ms.mostrarError(res.error || 'Credenciales incorrectas');

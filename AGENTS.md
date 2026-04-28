@@ -14,14 +14,14 @@ No usar frameworks frontend ni backend salvo autorización explícita.
 
 ## Arquitectura general
 
-Cada pantalla del sistema debe estar representada por un archivo PHP propio (contendrá HTML y lógica de vista).
+Cada pantalla del sistema debe estar representada por un archivo .html propio (que será procesado como PHP para permitir importaciones y lógica esencial).
 
 Cada archivo HTML debe conectarse únicamente con su propio archivo JavaScript.
 
 Ejemplo:
 
 ```text
-/pages/clientes.php
+/pages/clientes.html
 /assets/js/clientes.js
 ```
 
@@ -67,7 +67,7 @@ Ejemplo:
 /api/clientes/eliminar.php
 ```
 
-Los archivos PHP de vista no deben contener lógica SQL directa.
+Los archivos .html de vista no deben contener lógica SQL directa. Solamente deben incluir lógica PHP para importaciones de parciales (`include`) y visualización de variables esenciales.
 
 Los archivos JS deben comunicarse con PHP usando `fetch`.
 
@@ -136,9 +136,9 @@ Antes de modificar código:
 /
 ├── index.php
 ├── pages/
-│   ├── clientes.php
-│   ├── productos.php
-│   └── dashboard.php
+│   ├── clientes.html
+│   ├── productos.html
+│   └── dashboard.html
 ├── partials/
 │   ├── header.php
 │   ├── footer.php

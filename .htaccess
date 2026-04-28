@@ -1,0 +1,11 @@
+# / .htaccess
+# Configuración para procesar archivos .html como PHP
+AddType application/x-httpd-php .html
+
+# Opcional: Si AddType no funciona en algunos entornos, usar SetHandler
+<FilesMatch ".+\.html$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Configuración básica de seguridad
+Options -Indexes

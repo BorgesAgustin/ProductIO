@@ -22,7 +22,7 @@ El sistema debe estar organizado por pantallas independientes, lógica frontend 
 
 Cada pantalla debe tener:
 
-- un archivo PHP/HTML propio
+- un archivo .html propio (procesado como PHP)
 - un archivo JS propio
 - acceso a estilos globales
 - conexión a datos mediante endpoints PHP

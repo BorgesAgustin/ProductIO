@@ -14,16 +14,16 @@ if (!isset($_SESSION['user_id'])) {
         echo json_encode(['success' => false, 'error' => 'No autorizado']);
         exit;
     } else {
-        header('Location: login.php');
+        header('Location: login.html');
         exit;
     }
 }
 
 // Verificar si tiene fábrica seleccionada (excepto en onboarding)
 $currentPage = basename($_SERVER['PHP_SELF']);
-if ($currentPage !== 'onboarding.php' && !isset($_SESSION['fabrica_id'])) {
+if ($currentPage !== 'onboarding.html' && !isset($_SESSION['fabrica_id'])) {
     if (strpos($_SERVER['REQUEST_URI'], '/api/') === false) {
-        header('Location: onboarding.php');
+        header('Location: onboarding.html');
         exit;
     }
 }
