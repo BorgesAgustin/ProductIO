@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product.io | Gestión moderna de productos</title>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111831;
+      --card: rgba(255, 255, 255, 0.08);
+      --text: #f7f8fc;
+      --muted: #aeb7d8;
+      --primary: #7c5cff;
+      --primary-soft: #9b86ff;
+      --border: rgba(255, 255, 255, 0.12);
+      --success: #37d67a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 92, 255, 0.28), transparent 35%),
+        radial-gradient(circle at top right, rgba(55, 214, 122, 0.14), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 16, 32, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .logo span {
+      color: var(--primary-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 18px 40px rgba(124, 92, 255, 0.28);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 96px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 18px var(--success);
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .trusted {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .dashboard-card {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+      backdrop-filter: blur(20px);
+      padding: 22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.32);
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .window-bar span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.24);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .metric small {
+      color: var(--muted);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 2rem;
+      margin-top: 8px;
+    }
+
+    .chart {
+      height: 180px;
+      margin-top: 16px;
+      border-radius: 20px;
+      background:
+        linear-gradient(to top, rgba(124,92,255,0.35), transparent),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 1px,
+          transparent 1px,
+          transparent 44px
+        );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart::after {
+      content: "";
+      position: absolute;
+      inset: 40px 0 0;
+      background: linear-gradient(135deg, transparent 10%, var(--primary-soft) 45%, var(--success) 95%);
+      clip-path: polygon(0 75%, 18% 58%, 34% 64%, 48% 36%, 64% 42%, 78% 20%, 100% 28%, 100% 100%, 0 100%);
+      opacity: 0.85;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(124,92,255,0.18);
+      margin-bottom: 18px;
+      font-size: 1.3rem;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .pricing-card {
+      max-width: 420px;
+      margin: auto;
+      padding: 34px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+      text-align: center;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.25);
+    }
+
+    .price {
+      font-size: 3.4rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin: 14px 0;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+      margin: 26px 0;
+      color: var(--muted);
+    }
+
+    .pricing-card li {
+      margin: 12px 0;
+    }
+
+    .pricing-card li::before {
+      content: "✓";
+      color: var(--success);
+      margin-right: 8px;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 90px 0;
+    }
+
+    .cta-box {
+      border-radius: 32px;
+      padding: 56px 24px;
+      background: linear-gradient(135deg, rgba(124,92,255,0.25), rgba(55,214,122,0.12));
+      border: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+
+      .dashboard-card {
+        margin-top: 16px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav {
+        height: 68px;
+      }
+
+      .nav-actions .btn:first-child {
+        display: none;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">Product<span>.io</span></a>
+
+      <nav class="nav-links">
+        <a href="#features">Funciones</a>
+        <a href="#pricing">Precios</a>
+        <a href="#demo">Demo</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#" class="btn">Ingresar</a>
+        <a href="#" class="btn btn-primary">Probar gratis</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Nueva plataforma para equipos de producto
+          </div>
+
+          <h1>Gestioná productos con claridad, velocidad y foco.</h1>
+
+          <p>
+            Product.io ayuda a equipos modernos a priorizar ideas, organizar roadmap,
+            medir resultados y alinear negocio, diseño y desarrollo en un solo lugar.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Empezar ahora</a>
+            <a href="#demo" class="btn">Ver demo</a>
+          </div>
+
+          <div class="trusted">
+            Usado por startups, squads de producto y equipos SaaS en crecimiento.
+          </div>
+        </div>
+
+        <div class="dashboard-card" id="demo">
+          <div class="window-bar">
+            <span></span><span></span><span></span>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <small>Features activas</small>
+              <strong>48</strong>
+            </div>
+            <div class="metric">
+              <small>Impacto estimado</small>
+              <strong>92%</strong>
+            </div>
+            <div class="metric">
+              <small>Feedback recibido</small>
+              <strong>1.2k</strong>
+            </div>
+            <div class="metric">
+              <small>Sprints alineados</small>
+              <strong>16</strong>
+            </div>
+          </div>
+
+          <div class="chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Todo tu ciclo de producto en una plataforma simple.</h2>
+          <p>
+            Priorizá mejor, reducí ruido operativo y tomá decisiones basadas en datos reales.
+          </p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="icon">📌</div>
+            <h3>Roadmap inteligente</h3>
+            <p>
+              Organizá iniciativas, épicas y entregables con una visión clara por trimestre.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="icon">💬</div>
+            <h3>Feedback centralizado</h3>
+            <p>
+              Reuní comentarios de usuarios, clientes y stakeholders sin perder contexto.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="icon">📊</div>
+            <h3>Métricas accionables</h3>
+            <p>
+              Medí impacto, adopción y progreso para decidir qué construir después.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2>Un plan simple para empezar.</h2>
+          <p>Ideal para equipos que quieren ordenar su operación de producto.</p>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Growth</h3>
+          <div class="price">$19</div>
+          <p>por usuario / mes</p>
+
+          <ul>
+            <li>Roadmaps ilimitados</li>
+            <li>Feedback de clientes</li>
+            <li>Integraciones básicas</li>
+            <li>Dashboards de métricas</li>
+            <li>Soporte prioritario</li>
+          </ul>
+
+          <a href="#" class="btn btn-primary">Comenzar prueba gratis</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Convertí ideas en productos que crecen.</h2>
+          <p>Probá Product.io gratis y alineá a tu equipo desde el primer día.</p>
+          <a href="#" class="btn btn-primary">Crear cuenta gratis</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Product.io. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
