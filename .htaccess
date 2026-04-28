@@ -1,11 +1,22 @@
 # / .htaccess
-# Configuración para procesar archivos .html como PHP
-AddType application/x-httpd-php .html
+# Configuración avanzada para procesar .html como PHP y evitar descargas
 
-# Opcional: Si AddType no funciona en algunos entornos, usar SetHandler
+# 1. Intentar con AddHandler (muy común en CPanel/XAMPP)
+AddHandler application/x-httpd-php .html
+
+# 2. Intentar con SetHandler dentro de FilesMatch
 <FilesMatch ".+\.html$">
     SetHandler application/x-httpd-php
 </FilesMatch>
 
-# Configuración básica de seguridad
+# 3. Forzar el tipo de salida a HTML si el servidor está confundido
+<FilesMatch ".+\.html$">
+    ForceType text/html
+</FilesMatch>
+
+# 4. Asegurar que PHP no envíe el tipo de archivo crudo
+php_value default_mimetype "text/html"
+
+# Configuración básica
 Options -Indexes
+RewriteEngine On
