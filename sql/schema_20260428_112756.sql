@@ -1,8 +1,7 @@
 -- /sql/schema_20260428_112756.sql
 -- Archivo inicial de base de datos - Briant Gauna
 
-CREATE DATABASE IF NOT EXISTS productio;
-USE productio;
+
 
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,

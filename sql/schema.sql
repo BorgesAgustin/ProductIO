@@ -1,8 +1,7 @@
 -- /sql/schema.sql
 -- Estructura inicial del sistema
 
-CREATE DATABASE IF NOT EXISTS productio;
-USE productio;
+
 
 -- Tabla de Usuarios
 CREATE TABLE IF NOT EXISTS usuarios (
@@ -33,6 +32,10 @@ CREATE TABLE IF NOT EXISTS usuario_fabricas (
 );
 
 -- Datos de prueba
-INSERT INTO usuarios (username, email, password, nombre) VALUES ('admin', 'admin@productio.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrador'); -- password es 'password'
+INSERT INTO usuarios (username, email, password, nombre) VALUES 
+('admin', 'admin@productio.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrador'),
+('demo', 'demo@productio.com', '$2y$10$Ud91qOtWwAAJydcx2Ug3GOSmaSMM80Evmc8gkRfJuazNpbBEgr4vhO', 'Usuario Demo');
+
 INSERT INTO fabricas (nombre, direccion) VALUES ('Fábrica Norte', 'Ruta 9 Km 200'), ('Fábrica Sur', 'Parque Industrial A');
-INSERT INTO usuario_fabricas (usuario_id, fabrica_id) VALUES (1, 1), (1, 2);
+
+INSERT INTO usuario_fabricas (usuario_id, fabrica_id) VALUES (1, 1), (1, 2), (2, 1);

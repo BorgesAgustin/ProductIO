@@ -1,9 +1,9 @@
 <?php
 // /config/database.php
-$host = 'localhost';
-$db   = 'productio';
-$user = 'root';
-$pass = ''; // Ajustar según entorno
+$host = 'pdb1049.awardspace.net';
+$db   = '3434352_productio';
+$user = '3434352_productio';
+$pass = 'PRODUCTio098*';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
