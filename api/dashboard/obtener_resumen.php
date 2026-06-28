@@ -44,11 +44,11 @@ try {
             'cant_clientes' => $totalClientes,
             'cant_productos' => $totalProductos,
             'rendimiento_lineas' => [
-                ['linea' => 'Servilletas', 'valor' => 8200],
-                ['linea' => 'Bolsitas', 'valor' => 5500],
-                ['linea' => 'Troquelados', 'valor' => 7800],
-                ['linea' => 'Pajitas', 'valor' => 9200],
-                ['linea' => 'Vasos', 'valor' => 4100]
+                ['linea' => 'L1 Servilletas', 'valor' => 8200, 'costo' => 38000],
+                ['linea' => 'L2 Bolsitas', 'valor' => 5500, 'costo' => 22000],
+                ['linea' => 'L3 Troquelados', 'valor' => 7800, 'costo' => 31000],
+                ['linea' => 'L4 Pajitas', 'valor' => 9200, 'costo' => 18000],
+                ['linea' => 'L5 Vasos', 'valor' => 4100, 'costo' => 25000]
             ]
         ];
     } else if ($fabrica_id === 2) {
@@ -64,11 +64,11 @@ try {
             'cant_clientes' => $totalClientes,
             'cant_productos' => $totalProductos,
             'rendimiento_lineas' => [
-                ['linea' => 'Servilletas', 'valor' => 7100],
-                ['linea' => 'Bolsitas', 'valor' => 6400],
-                ['linea' => 'Troquelados', 'valor' => 6900],
-                ['linea' => 'Pajitas', 'valor' => 8500],
-                ['linea' => 'Vasos', 'valor' => 5200]
+                ['linea' => 'L1 Servilletas', 'valor' => 7100, 'costo' => 33000],
+                ['linea' => 'L2 Bolsitas', 'valor' => 6400, 'costo' => 26000],
+                ['linea' => 'L3 Troquelados', 'valor' => 6900, 'costo' => 28000],
+                ['linea' => 'L4 Pajitas', 'valor' => 8500, 'costo' => 17000],
+                ['linea' => 'L5 Vasos', 'valor' => 5200, 'costo' => 29000]
             ]
         ];
     } else {
@@ -85,11 +85,11 @@ try {
             'cant_clientes' => $totalClientes,
             'cant_productos' => $totalProductos,
             'rendimiento_lineas' => [
-                ['linea' => 'Servilletas', 'valor' => 5000],
-                ['linea' => 'Bolsitas', 'valor' => 5000],
-                ['linea' => 'Troquelados', 'valor' => 5000],
-                ['linea' => 'Pajitas', 'valor' => 5000],
-                ['linea' => 'Vasos', 'valor' => 5000]
+                ['linea' => 'L1 Servilletas', 'valor' => 5000, 'costo' => 20000],
+                ['linea' => 'L2 Bolsitas', 'valor' => 5000, 'costo' => 20000],
+                ['linea' => 'L3 Troquelados', 'valor' => 5000, 'costo' => 20000],
+                ['linea' => 'L4 Pajitas', 'valor' => 5000, 'costo' => 20000],
+                ['linea' => 'L5 Vasos', 'valor' => 5000, 'costo' => 20000]
             ]
         ];
     }
