@@ -13,7 +13,7 @@ Cada pantalla debe ser independiente.
 Ejemplo:
 
 ```text
-/pages/clientes.html
+/pages/clientes.php
 /assets/js/clientes.js
 ```
 
