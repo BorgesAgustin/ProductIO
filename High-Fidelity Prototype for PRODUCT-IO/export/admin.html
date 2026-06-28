@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUCT-IO — Administración de usuarios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Menú principal">
+    <a href="dashboard.html" class="sidebar__brand"><div class="sidebar__brand-logo">PIO</div><div class="sidebar__brand-text"><span class="sidebar__brand-name">PRODUCT-IO</span><span class="sidebar__brand-tagline">Papelera K&amp;A</span></div></a>
+    <nav class="sidebar__nav">
+      <div class="sidebar__nav-group"><div class="sidebar__nav-group-label">General</div>
+        <a href="dashboard.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span class="sidebar__nav-item-label">Dashboard</span></a>
+        <a href="produccion.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 8a2 2 0 010-4h14a2 2 0 010 4M5 8l1 12h12l1-12"/></svg><span class="sidebar__nav-item-label">Producción</span></a>
+        <a href="trazabilidad.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="sidebar__nav-item-label">Trazabilidad</span></a>
+      </div>
+      <div class="sidebar__nav-group"><div class="sidebar__nav-group-label">Análisis</div>
+        <a href="reportes.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg><span class="sidebar__nav-item-label">Reportes</span></a>
+        <a href="admin.html" class="sidebar__nav-item sidebar__nav-item--active"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="sidebar__nav-item-label">Administración</span></a>
+      </div>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__user-avatar">AS</div>
+      <div class="sidebar__user-info"><div class="sidebar__user-name">Admin Sistema</div><div class="sidebar__user-role">Administrador</div></div>
+      <button class="btn btn--ghost btn--icon" data-action="logout" style="color:rgba(255,255,255,0.5)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="app__main">
+
+    <header class="header" role="banner">
+      <div class="header__left">
+        <button class="header__menu-btn" aria-label="Abrir menú"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <nav class="header__breadcrumb"><a href="dashboard.html">PRODUCT-IO</a><span>›</span><span class="header__breadcrumb-current">Administración</span></nav>
+      </div>
+      <div class="header__right">
+        <div class="header__notif" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="header__notif-badge">3</span></div>
+        <div class="header__user"><div class="header__user-avatar">AS</div><span class="header__user-name">Admin Sistema</span></div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="app__content">
+
+      <div class="page-header">
+        <div class="page-header__titles">
+          <h1 class="page-header__title">Gestión de usuarios</h1>
+          <p class="page-header__subtitle">Administración de roles y accesos al sistema</p>
+        </div>
+        <div class="page-header__actions">
+          <button id="btn-new-user" class="btn btn--primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nuevo usuario
+          </button>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="filter-bar mb-5">
+        <div class="filter-bar__search" style="max-width:360px">
+          <div class="search-bar">
+            <svg class="search-bar__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input id="search-users" type="search" class="search-bar__input" placeholder="Buscar por nombre, email o rol...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Users table -->
+      <div class="table-wrapper">
+        <table class="data-table" id="users-table">
+          <thead class="data-table__head">
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Último acceso</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody class="data-table__body">
+            <tr>
+              <td class="data-table__cell--primary">Carlos Rodríguez</td>
+              <td class="text-muted">c.rodriguez@papeleraKA.com</td>
+              <td><span class="role-badge role-badge--operator">Operario de Línea</span></td>
+              <td><span class="badge badge--enabled">Activo</span></td>
+              <td class="text-muted text-sm">19/06/2026 07:42</td>
+              <td>
+                <div class="data-table__cell--actions">
+                  <button class="btn btn--ghost btn--icon btn--sm" title="Editar usuario">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </button>
+                  <button class="btn btn--ghost btn--sm" data-action="toggle-status" style="font-size:var(--font-size-xs)">Desactivar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="data-table__cell--primary">Ana Torres</td>
+              <td class="text-muted">a.torres@papeleraKA.com</td>
+              <td><span class="role-badge role-badge--quality">Enc. Calidad</span></td>
+              <td><span class="badge badge--enabled">Activo</span></td>
+              <td class="text-muted text-sm">19/06/2026 08:15</td>
+              <td>
+                <div class="data-table__cell--actions">
+                  <button class="btn btn--ghost btn--icon btn--sm" title="Editar usuario"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                  <button class="btn btn--ghost btn--sm" data-action="toggle-status" style="font-size:var(--font-size-xs)">Desactivar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="data-table__cell--primary">Luis Herrera</td>
+              <td class="text-muted">l.herrera@papeleraKA.com</td>
+              <td><span class="role-badge role-badge--maintenance">Enc. Mantenimiento</span></td>
+              <td><span class="badge badge--enabled">Activo</span></td>
+              <td class="text-muted text-sm">18/06/2026 16:30</td>
+              <td>
+                <div class="data-table__cell--actions">
+                  <button class="btn btn--ghost btn--icon btn--sm" title="Editar usuario"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                  <button class="btn btn--ghost btn--sm" data-action="toggle-status" style="font-size:var(--font-size-xs)">Desactivar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="data-table__cell--primary">María Gómez</td>
+              <td class="text-muted">m.gomez@papeleraKA.com</td>
+              <td><span class="role-badge role-badge--accountant">Contador / Analista</span></td>
+              <td><span class="badge badge--enabled">Activo</span></td>
+              <td class="text-muted text-sm">19/06/2026 09:00</td>
+              <td>
+                <div class="data-table__cell--actions">
+                  <button class="btn btn--ghost btn--icon btn--sm" title="Editar usuario"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                  <button class="btn btn--ghost btn--sm" data-action="toggle-status" style="font-size:var(--font-size-xs)">Desactivar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="data-table__cell--primary">Roberto Silva</td>
+              <td class="text-muted">r.silva@papeleraKA.com</td>
+              <td><span class="role-badge role-badge--manager">Gerente Producción</span></td>
+              <td><span class="badge badge--disabled">Inactivo</span></td>
+              <td class="text-muted text-sm">12/06/2026 11:20</td>
+              <td>
+                <div class="data-table__cell--actions">
+                  <button class="btn btn--ghost btn--icon btn--sm" title="Editar usuario"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                  <button class="btn btn--ghost btn--sm" data-action="toggle-status" style="font-size:var(--font-size-xs)">Activar</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<!-- =============================================
+     MODAL: Crear nuevo usuario
+     ============================================= -->
+<div id="modal-create-user" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal__overlay"></div>
+  <div class="modal__dialog">
+
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-title">Crear nuevo usuario</h2>
+      <button class="modal__close" id="modal-close" aria-label="Cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="modal__body">
+      <form id="form-create-user" novalidate>
+
+        <div class="form-field">
+          <label class="form-field__label form-field__label--required" for="user-name">Nombre completo</label>
+          <input id="user-name" type="text" class="form-field__input" placeholder="Ej: Juan Pérez">
+        </div>
+
+        <div class="form-field">
+          <label class="form-field__label form-field__label--required" for="user-email">Email corporativo</label>
+          <input id="user-email" type="email" class="form-field__input" placeholder="usuario@papeleraKA.com">
+        </div>
+
+        <div class="form-field">
+          <label class="form-field__label form-field__label--required" for="user-password">Contraseña inicial</label>
+          <input id="user-password" type="password" class="form-field__input" placeholder="Mínimo 8 caracteres">
+          <span class="form-field__hint">El usuario deberá cambiarla en el primer acceso.</span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-field__label form-field__label--required" for="user-role">Rol asignado</label>
+          <select id="user-role" class="form-field__select">
+            <option value="">Seleccione un rol</option>
+            <option value="operator">Operario de Línea</option>
+            <option value="quality">Encargado de Calidad</option>
+            <option value="maintenance">Encargado de Mantenimiento</option>
+            <option value="accountant">Contador / Analista</option>
+            <option value="manager">Gerente de Producción</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="modal__footer">
+      <button id="btn-cancel-user" class="btn btn--outline">Cancelar</button>
+      <button id="btn-save-user" class="btn btn--primary">Crear usuario</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="sidebar-overlay"></div>
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>

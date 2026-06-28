@@ -88,7 +88,7 @@ include '../partials/sidebar.php';
                 </div>
                 <hr style="border:0; border-top: 1px solid var(--border);">
                 <div style="text-align: center; margin-top: 0.5rem;">
-                    <a href="onboarding.html" class="btn btn-primary" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem;">Cambiar de Fábrica</a>
+                    <a href="onboarding.php" class="btn btn-primary" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem;">Cambiar de Fábrica</a>
                 </div>
             </div>
         </div>

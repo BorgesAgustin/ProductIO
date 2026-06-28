@@ -53,7 +53,7 @@ function seleccionarFabrica(id) {
     .then(r => r.json())
     .then(res => {
         if (res.success) {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'dashboard.php';
         } else {
             window.ms.mostrarError(res.error);
         }

@@ -1,0 +1,334 @@
+/* ============================================================
+   PRODUCT-IO — Layout System (layout.css)
+   ============================================================ */
+
+
+/* ===========================================================
+   APP SHELL — Sidebar + Content Layout
+   =========================================================== */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Main area (right of sidebar) */
+.app__main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition-base);
+}
+
+.app__main--full {
+  margin-left: 0;
+}
+
+/* Content area (below header) */
+.app__content {
+  flex: 1;
+  margin-top: var(--header-height);
+  padding: var(--space-8);
+  background-color: var(--color-bg);
+}
+
+/* ===========================================================
+   GRID UTILITIES
+   =========================================================== */
+
+.grid {
+  display: grid;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.grid--6 {
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+}
+
+/* KPI rows */
+.kpi-grid--4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.kpi-grid--6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+/* Column spans */
+.col-span-2 {
+  grid-column: span 2;
+}
+
+/* ===========================================================
+   FLEX UTILITIES
+   =========================================================== */
+
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex--between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex--start {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex--end {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex--col {
+  flex-direction: column;
+}
+
+.flex--gap-2 { gap: var(--space-2); }
+.flex--gap-3 { gap: var(--space-3); }
+.flex--gap-4 { gap: var(--space-4); }
+.flex--gap-6 { gap: var(--space-6); }
+
+.flex--1 { flex: 1; }
+
+/* ===========================================================
+   SPACING UTILITIES
+   =========================================================== */
+
+.mb-4  { margin-bottom: var(--space-4);  }
+.mb-5  { margin-bottom: var(--space-5);  }
+.mb-6  { margin-bottom: var(--space-6);  }
+.mb-8  { margin-bottom: var(--space-8);  }
+
+.mt-4  { margin-top: var(--space-4);     }
+.mt-6  { margin-top: var(--space-6);     }
+
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+
+/* ===========================================================
+   TYPOGRAPHY UTILITIES
+   =========================================================== */
+
+.text-xs    { font-size: var(--font-size-xs);   }
+.text-sm    { font-size: var(--font-size-sm);   }
+.text-base  { font-size: var(--font-size-base); }
+.text-lg    { font-size: var(--font-size-lg);   }
+.text-xl    { font-size: var(--font-size-xl);   }
+.text-2xl   { font-size: var(--font-size-2xl);  }
+
+.font-medium   { font-weight: var(--font-weight-medium);   }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold     { font-weight: var(--font-weight-bold);     }
+
+.text-primary   { color: var(--color-text-primary);   }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted     { color: var(--color-text-muted);     }
+.text-success   { color: var(--color-success);        }
+.text-danger    { color: var(--color-danger);         }
+.text-accent    { color: var(--color-accent-dark);    }
+
+/* ===========================================================
+   FILTER BAR — Search + Dropdowns Row
+   =========================================================== */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.filter-bar__search {
+  flex: 1;
+  min-width: 240px;
+}
+
+.filter-bar__select {
+  width: 160px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-8);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.filter-bar__select:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+}
+
+/* ===========================================================
+   SECTION SEPARATOR
+   =========================================================== */
+
+.section-gap {
+  margin-bottom: var(--space-8);
+}
+
+/* ===========================================================
+   COLLAPSIBLE SECTION
+   =========================================================== */
+
+.collapsible__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-fast);
+  text-align: left;
+}
+
+.collapsible__trigger:hover {
+  background-color: var(--color-border-light);
+}
+
+.collapsible__trigger-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-base);
+}
+
+.collapsible__trigger--open .collapsible__trigger-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible__body {
+  display: none;
+  padding-top: var(--space-4);
+}
+
+.collapsible__body--open {
+  display: block;
+}
+
+/* ===========================================================
+   DIVIDER
+   =========================================================== */
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+/* ===========================================================
+   RESPONSIVE — Mobile Overlay for Sidebar
+   =========================================================== */
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: calc(var(--z-sidebar) - 1);
+}
+
+.sidebar-overlay--visible {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .app__main {
+    margin-left: 0;
+  }
+
+  .header {
+    left: 0;
+  }
+
+  .sidebar {
+    transform: translateX(calc(-1 * var(--sidebar-width)));
+  }
+
+  .sidebar--mobile-open {
+    transform: translateX(0);
+  }
+
+  .kpi-grid--4,
+  .kpi-grid--6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--4,
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .supply-row {
+    grid-template-columns: 1fr 100px 40px;
+  }
+
+  .app__content {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid--4,
+  .kpi-grid--6,
+  .grid--4,
+  .grid--3,
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+}

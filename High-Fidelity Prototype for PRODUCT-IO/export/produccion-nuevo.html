@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUCT-IO — Iniciar nuevo lote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Menú principal">
+    <a href="dashboard.html" class="sidebar__brand">
+      <div class="sidebar__brand-logo">PIO</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">PRODUCT-IO</span>
+        <span class="sidebar__brand-tagline">Papelera K&amp;A</span>
+      </div>
+    </a>
+    <nav class="sidebar__nav">
+      <div class="sidebar__nav-group">
+        <div class="sidebar__nav-group-label">General</div>
+        <a href="dashboard.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span class="sidebar__nav-item-label">Dashboard</span></a>
+        <a href="produccion.html" class="sidebar__nav-item sidebar__nav-item--active"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 8a2 2 0 010-4h14a2 2 0 010 4M5 8l1 12h12l1-12"/></svg><span class="sidebar__nav-item-label">Producción</span></a>
+        <a href="trazabilidad.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="sidebar__nav-item-label">Trazabilidad</span></a>
+      </div>
+      <div class="sidebar__nav-group">
+        <div class="sidebar__nav-group-label">Análisis</div>
+        <a href="reportes.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg><span class="sidebar__nav-item-label">Reportes</span></a>
+        <a href="admin.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="sidebar__nav-item-label">Administración</span></a>
+      </div>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__user-avatar">AS</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name">Admin Sistema</div>
+        <div class="sidebar__user-role">Administrador</div>
+      </div>
+      <button class="btn btn--ghost btn--icon" data-action="logout" title="Cerrar sesión" style="color:rgba(255,255,255,0.5)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="app__main">
+
+    <header class="header" role="banner">
+      <div class="header__left">
+        <button class="header__menu-btn" aria-label="Abrir menú"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <nav class="header__breadcrumb" aria-label="Migas de pan">
+          <a href="dashboard.html">PRODUCT-IO</a><span>›</span>
+          <a href="produccion.html">Producción</a><span>›</span>
+          <span class="header__breadcrumb-current">Nuevo lote</span>
+        </nav>
+      </div>
+      <div class="header__right">
+        <div class="header__user">
+          <div class="header__user-avatar">AS</div>
+          <span class="header__user-name">Admin Sistema</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="app__content">
+
+      <div class="page-header">
+        <div class="page-header__titles">
+          <h1 class="page-header__title">Iniciar nuevo lote</h1>
+          <p class="page-header__subtitle">Complete los datos para registrar el lote de producción</p>
+        </div>
+        <div class="page-header__actions">
+          <a href="produccion.html" class="btn btn--outline">← Cancelar</a>
+        </div>
+      </div>
+
+      <!-- Stepper -->
+      <div class="stepper" role="navigation" aria-label="Pasos del formulario">
+        <div class="stepper__step stepper__step--active" id="stepper-circle-1">
+          <div class="stepper__circle">1</div>
+        </div>
+        <span class="stepper__label stepper__step--active" id="stepper-label-1">Datos del lote</span>
+        <div class="stepper__line" id="stepper-line"></div>
+        <div class="stepper__step" id="stepper-circle-2">
+          <div class="stepper__circle">2</div>
+        </div>
+        <span class="stepper__label" id="stepper-label-2">Confirmación</span>
+      </div>
+
+      <!-- Form container -->
+      <div class="card" style="max-width:720px">
+        <form id="form-new-batch" novalidate>
+
+          <!-- Step 1 panel -->
+          <div id="step-panel-1">
+            <div class="card__header">
+              <h2 class="card__title">Paso 1 — Datos del lote</h2>
+            </div>
+            <div class="card__body" style="display:flex;flex-direction:column;gap:var(--space-5)">
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-field__label form-field__label--required" for="input-line">Línea de producción</label>
+                  <select id="input-line" class="form-field__select">
+                    <option value="">Seleccione línea</option>
+                    <option value="L1">L1 — Servilletera</option>
+                    <option value="L2">L2 — Bolseadora</option>
+                    <option value="L3">L3 — Troqueladora</option>
+                    <option value="L4">L4 — Pajillera</option>
+                    <option value="L5">L5 — Vasos Térmicos</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label form-field__label--required" for="input-machine">Máquina</label>
+                  <select id="input-machine" class="form-field__select">
+                    <option value="">Seleccione línea primero</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-field__label form-field__label--required" for="input-product">Producto a fabricar</label>
+                <select id="input-product" class="form-field__select">
+                  <option value="">Seleccione producto</option>
+                  <optgroup label="Servilletas">
+                    <option value="SRV-NAT-200U">Servilletas Natural 200u — SRV-NAT-200U</option>
+                    <option value="SRV-BLC-100U">Servilletas Blancas 100u — SRV-BLC-100U</option>
+                  </optgroup>
+                  <optgroup label="Bolsitas">
+                    <option value="BOL-KRAFT-500">Bolsitas Kraft 500u — BOL-KRAFT-500</option>
+                    <option value="BOL-PLST-1000">Bolsitas Plástico 1000u — BOL-PLST-1000</option>
+                  </optgroup>
+                  <optgroup label="Troquelados">
+                    <option value="TRQ-CIRCU-100">Troquelado Circular 100u — TRQ-CIRCU-100</option>
+                  </optgroup>
+                  <optgroup label="Pajitas">
+                    <option value="PAJ-PLX-6MM">Pajitas Flex 6mm x500 — PAJ-PLX-6MM</option>
+                  </optgroup>
+                  <optgroup label="Vasos">
+                    <option value="VAS-TERM-8OZ">Vaso Térmico 8oz x50 — VAS-TERM-8OZ</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-field__label" for="input-employees">Cantidad de operarios</label>
+                  <input id="input-employees" type="number" class="form-field__input" placeholder="Ej: 3" min="1" max="20" value="3">
+                </div>
+                <div class="form-field">
+                  <!-- empty cell for alignment -->
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-field__label" for="input-date">Fecha de inicio</label>
+                  <input id="input-date" type="date" class="form-field__input">
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="input-time">Hora de inicio</label>
+                  <input id="input-time" type="time" class="form-field__input">
+                </div>
+              </div>
+
+            </div>
+            <div class="card__footer">
+              <button type="button" id="btn-next" class="btn btn--primary">
+                Continuar
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 panel (hidden initially) -->
+          <div id="step-panel-2" style="display:none">
+            <div class="card__header">
+              <h2 class="card__title">Paso 2 — Confirmar datos</h2>
+            </div>
+            <div class="card__body">
+              <div class="confirm-box">
+                <div class="confirm-box__title">Resumen del lote a iniciar</div>
+                <div class="confirm-box__grid" id="confirm-grid">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+            </div>
+            <div class="card__footer">
+              <button type="button" id="btn-back" class="btn btn--outline">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Volver
+              </button>
+              <button type="button" id="btn-submit" class="btn btn--success">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                Iniciar lote
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<div class="sidebar-overlay"></div>
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="js/main.js"></script>
+<script src="js/production.js"></script>
+<script>
+  /* Pre-fill today's date and current time */
+  document.addEventListener('DOMContentLoaded', function () {
+    var now = new Date();
+    var dateStr = now.toISOString().slice(0, 10);
+    var timeStr = now.toTimeString().slice(0, 5);
+    document.getElementById('input-date').value = dateStr;
+    document.getElementById('input-time').value = timeStr;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUCT-IO — Reportes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Menú principal">
+    <a href="dashboard.html" class="sidebar__brand"><div class="sidebar__brand-logo">PIO</div><div class="sidebar__brand-text"><span class="sidebar__brand-name">PRODUCT-IO</span><span class="sidebar__brand-tagline">Papelera K&amp;A</span></div></a>
+    <nav class="sidebar__nav">
+      <div class="sidebar__nav-group"><div class="sidebar__nav-group-label">General</div>
+        <a href="dashboard.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span class="sidebar__nav-item-label">Dashboard</span></a>
+        <a href="produccion.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 8a2 2 0 010-4h14a2 2 0 010 4M5 8l1 12h12l1-12"/></svg><span class="sidebar__nav-item-label">Producción</span></a>
+        <a href="trazabilidad.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="sidebar__nav-item-label">Trazabilidad</span></a>
+      </div>
+      <div class="sidebar__nav-group"><div class="sidebar__nav-group-label">Análisis</div>
+        <a href="reportes.html" class="sidebar__nav-item sidebar__nav-item--active"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg><span class="sidebar__nav-item-label">Reportes</span></a>
+        <a href="admin.html" class="sidebar__nav-item"><svg class="sidebar__nav-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="sidebar__nav-item-label">Administración</span></a>
+      </div>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__user-avatar">AS</div>
+      <div class="sidebar__user-info"><div class="sidebar__user-name">Admin Sistema</div><div class="sidebar__user-role">Administrador</div></div>
+      <button class="btn btn--ghost btn--icon" data-action="logout" style="color:rgba(255,255,255,0.5)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="app__main">
+
+    <header class="header" role="banner">
+      <div class="header__left">
+        <button class="header__menu-btn" aria-label="Abrir menú"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <nav class="header__breadcrumb"><a href="dashboard.html">PRODUCT-IO</a><span>›</span><span class="header__breadcrumb-current">Reportes</span></nav>
+      </div>
+      <div class="header__right">
+        <div class="header__notif" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="header__notif-badge">3</span></div>
+        <div class="header__user"><div class="header__user-avatar">AS</div><span class="header__user-name">Admin Sistema</span></div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="app__content">
+
+      <div class="page-header">
+        <div class="page-header__titles">
+          <h1 class="page-header__title">Reportes de producción</h1>
+          <p class="page-header__subtitle">Análisis de costos y KPIs operacionales</p>
+        </div>
+        <div class="page-header__actions">
+          <select class="filter-bar__select" style="width:auto">
+            <option>Junio 2026</option>
+            <option>Mayo 2026</option>
+            <option>Abril 2026</option>
+          </select>
+          <button class="btn btn--outline btn--sm">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Exportar Excel
+          </button>
+          <button class="btn btn--outline btn--sm">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Exportar PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 KPI cards -->
+      <div class="kpi-grid--6 section-gap">
+        <div class="kpi-card">
+          <div class="kpi-card__header"><span class="kpi-card__label">Variación stock</span><div class="kpi-card__icon kpi-card__icon--primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div>
+          <div class="kpi-card__value">-8.3%</div>
+          <div class="kpi-card__trend kpi-card__trend--negative"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>vs mes anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__header"><span class="kpi-card__label">Hs. producción</span><div class="kpi-card__icon kpi-card__icon--secondary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div>
+          <div class="kpi-card__value">1.248</div>
+          <div class="kpi-card__trend kpi-card__trend--positive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>+4.1% vs mes ant.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__header"><span class="kpi-card__label">Efic. global líneas</span><div class="kpi-card__icon kpi-card__icon--success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div></div>
+          <div class="kpi-card__value">87.4%</div>
+          <div class="kpi-card__trend kpi-card__trend--positive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>+2.1 pp</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__header"><span class="kpi-card__label">Costo total mes</span><div class="kpi-card__icon kpi-card__icon--danger"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div></div>
+          <div class="kpi-card__value">$2.89M</div>
+          <div class="kpi-card__trend kpi-card__trend--negative"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>+6.8% vs mes ant.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__header"><span class="kpi-card__label">Costo prom./familia</span><div class="kpi-card__icon kpi-card__icon--accent"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 8a2 2 0 010-4h14a2 2 0 010 4M5 8l1 12h12l1-12"/></svg></div></div>
+          <div class="kpi-card__value">$578K</div>
+          <div class="kpi-card__trend kpi-card__trend--positive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>Optimizado</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__header"><span class="kpi-card__label">Costo op. mensual</span><div class="kpi-card__icon kpi-card__icon--primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div></div>
+          <div class="kpi-card__value">$445K</div>
+          <div class="kpi-card__trend kpi-card__trend--positive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>-2.3% vs mes ant.</div>
+        </div>
+      </div>
+
+      <!-- Charts row -->
+      <div class="grid grid--2 section-gap">
+        <div class="chart-box">
+          <div class="chart-box__header">
+            <div><div class="chart-box__title">Evolución de costos semanal</div><div class="chart-box__subtitle">Costo total y costo/unidad — Junio 2026</div></div>
+          </div>
+          <div class="chart-box__canvas" style="height:280px"><canvas id="chart-cost-evolution"></canvas></div>
+        </div>
+        <div class="chart-box">
+          <div class="chart-box__header">
+            <div><div class="chart-box__title">Distribución por familia</div><div class="chart-box__subtitle">% del costo total del período</div></div>
+          </div>
+          <div class="chart-box__canvas" style="height:280px"><canvas id="chart-family-distribution"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Family detail table -->
+      <div class="card">
+        <div class="card__header"><h2 class="card__title">Detalle por familia de producto</h2></div>
+        <div class="table-wrapper" style="border:none;box-shadow:none;border-radius:0">
+          <table class="data-table">
+            <thead class="data-table__head">
+              <tr>
+                <th>Familia</th>
+                <th class="data-table__cell--numeric">Lotes</th>
+                <th class="data-table__cell--numeric">Unidades totales</th>
+                <th class="data-table__cell--numeric">Costo total</th>
+                <th class="data-table__cell--numeric">Costo prom./u</th>
+                <th style="min-width:160px">Eficiencia</th>
+              </tr>
+            </thead>
+            <tbody class="data-table__body">
+              <tr>
+                <td><span class="family-chip family-chip--servilletas">Servilletas</span></td>
+                <td class="data-table__cell--numeric">18</td>
+                <td class="data-table__cell--numeric">86.400</td>
+                <td class="data-table__cell--numeric font-semibold">$982.000</td>
+                <td class="data-table__cell--numeric">$11.37</td>
+                <td>
+                  <div class="efficiency-bar">
+                    <div class="efficiency-bar__track"><div class="efficiency-bar__fill" style="width:91%"></div></div>
+                    <span class="efficiency-bar__label">91%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="family-chip family-chip--bolsitas">Bolsitas</span></td>
+                <td class="data-table__cell--numeric">14</td>
+                <td class="data-table__cell--numeric">62.000</td>
+                <td class="data-table__cell--numeric font-semibold">$635.000</td>
+                <td class="data-table__cell--numeric">$10.24</td>
+                <td>
+                  <div class="efficiency-bar">
+                    <div class="efficiency-bar__track"><div class="efficiency-bar__fill" style="width:85%"></div></div>
+                    <span class="efficiency-bar__label">85%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="family-chip family-chip--troquelados">Troquelados</span></td>
+                <td class="data-table__cell--numeric">10</td>
+                <td class="data-table__cell--numeric">38.500</td>
+                <td class="data-table__cell--numeric font-semibold">$520.000</td>
+                <td class="data-table__cell--numeric">$13.51</td>
+                <td>
+                  <div class="efficiency-bar">
+                    <div class="efficiency-bar__track"><div class="efficiency-bar__fill efficiency-bar__fill--warning" style="width:78%"></div></div>
+                    <span class="efficiency-bar__label">78%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="family-chip family-chip--pajitas">Pajitas</span></td>
+                <td class="data-table__cell--numeric">8</td>
+                <td class="data-table__cell--numeric">24.000</td>
+                <td class="data-table__cell--numeric font-semibold">$348.000</td>
+                <td class="data-table__cell--numeric">$14.50</td>
+                <td>
+                  <div class="efficiency-bar">
+                    <div class="efficiency-bar__track"><div class="efficiency-bar__fill efficiency-bar__fill--warning" style="width:74%"></div></div>
+                    <span class="efficiency-bar__label">74%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="family-chip family-chip--vasos">Vasos</span></td>
+                <td class="data-table__cell--numeric">12</td>
+                <td class="data-table__cell--numeric">45.600</td>
+                <td class="data-table__cell--numeric font-semibold">$405.000</td>
+                <td class="data-table__cell--numeric">$8.88</td>
+                <td>
+                  <div class="efficiency-bar">
+                    <div class="efficiency-bar__track"><div class="efficiency-bar__fill" style="width:88%"></div></div>
+                    <span class="efficiency-bar__label">88%</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<div class="sidebar-overlay"></div>
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/charts.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.initReportsCharts && window.initReportsCharts();
+  });
+</script>
+
+</body>
+</html>
