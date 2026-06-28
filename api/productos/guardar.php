@@ -29,7 +29,7 @@ if (!$input) {
 $id = isset($input['id']) && !empty($input['id']) ? intval($input['id']) : null;
 $sku = isset($input['sku']) ? trim($input['sku']) : '';
 $nombre = isset($input['nombre']) ? trim($input['nombre']) : '';
-$familia = isset($input['familia']) ? trim($input['familia']) : '';
+$familia = isset($input['familia']) ? strtoupper(trim($input['familia'])) : '';
 $gramaje = isset($input['gramaje']) && $input['gramaje'] !== '' ? floatval($input['gramaje']) : null;
 $color = isset($input['color']) ? trim($input['color']) : '';
 $descripcion = isset($input['descripcion']) ? trim($input['descripcion']) : '';
@@ -42,12 +42,9 @@ if (empty($sku) || empty($nombre) || empty($familia)) {
 
 // Validar que la familia de producto sea una de las válidas
 $familiasValidas = ['SERVILLETAS', 'BOLSITAS', 'TROQUELADOS', 'PAJITAS', 'VASOS'];
-if (!in_repeat_check($familia, $familiasValidas)) {
-    $familia = strtoupper($familia);
-    if (!in_array($familia, $familiasValidas)) {
-        echo json_encode(['success' => false, 'error' => 'Familia de producto inválida. Valores permitidos: ' . implode(', ', $familiasValidas)]);
-        exit;
-    }
+if (!in_array($familia, $familiasValidas)) {
+    echo json_encode(['success' => false, 'error' => 'Familia de producto inválida. Valores permitidos: ' . implode(', ', $familiasValidas)]);
+    exit;
 }
 
 try {
@@ -87,10 +84,5 @@ try {
     }
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => 'Error al guardar producto: ' . $e->getMessage()]);
-}
-
-// Función auxiliar para validación de elemento en array sin distinguir mayúsculas/minúsculas de manera directa
-function in_repeat_check($val, $arr) {
-    return in_array(strtoupper($val), $arr);
 }
 ?>

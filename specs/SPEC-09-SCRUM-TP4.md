@@ -108,3 +108,16 @@ Al finalizar el Sprint, se presentará en el informe final:
 1. **Capturas de Pantalla**: Las nuevas interfaces (Dashboard, Clientes, Productos) renderizadas con estilos consistentes.
 2. **Logs e Inspección de Red (DevTools)**: Capturas de las llamadas HTTP GET/POST mediante `fetch` confirmando las respuestas JSON desde el backend.
 3. **Persistencia en DB**: Capturas de las tablas `clientes` y `productos` en el gestor MySQL remota mostrando los registros de prueba ingresados por la interfaz.
+
+---
+
+## 8. Nota de Simulación de KPIs (Dashboard)
+Debido a que los módulos de **Producción (Lotes)**, **Insumos**, **Costeo** y **Trazabilidad** (PB01 a PB06) no forman parte del alcance de este **Sprint TP4** (el cual está limitado a datos maestros y Dashboard principal), las siguientes métricas y gráficos visualizados en el Dashboard son generados de manera simulada por el backend en base a la fábrica seleccionada:
+*   **Lotes activos**
+*   **Costo promedio por lote**
+*   **Eficiencia de línea**
+*   **Alertas pendientes**
+*   **Gráfico de barras de Producción por línea**
+
+Las métricas de **Clientes** y **Productos** sí reflejan datos 100% reales consultados mediante queries directas a la base de datos para la fábrica seleccionada. El endpoint `/api/dashboard/obtener_resumen.php` explicita esto en su respuesta JSON mediante los campos booleanos `kpis_produccion_simulados` y `kpis_maestros_simulados`.
+

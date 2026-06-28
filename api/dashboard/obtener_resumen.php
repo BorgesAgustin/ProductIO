@@ -31,6 +31,7 @@ try {
     $totalProductos = $stmtProductos->fetch()['total'];
 
     // 2. Generar métricas operativas basadas en el contexto de la fábrica seleccionada
+    // DATOS SIMULADOS: el módulo de Producción/Lotes está fuera del alcance del Sprint TP4 (ver PB01-PB04). Reemplazar por queries reales cuando se implemente la tabla lotes.
     if ($fabrica_id === 1) {
         $resumen = [
             'nombre_fabrica' => 'Fábrica Norte',
@@ -43,6 +44,8 @@ try {
             'alertas' => 3,
             'cant_clientes' => $totalClientes,
             'cant_productos' => $totalProductos,
+            'kpis_produccion_simulados' => true,
+            'kpis_maestros_simulados' => false,
             'rendimiento_lineas' => [
                 ['linea' => 'L1 Servilletas', 'valor' => 8200, 'costo' => 38000],
                 ['linea' => 'L2 Bolsitas', 'valor' => 5500, 'costo' => 22000],
@@ -63,6 +66,8 @@ try {
             'alertas' => 1,
             'cant_clientes' => $totalClientes,
             'cant_productos' => $totalProductos,
+            'kpis_produccion_simulados' => true,
+            'kpis_maestros_simulados' => false,
             'rendimiento_lineas' => [
                 ['linea' => 'L1 Servilletas', 'valor' => 7100, 'costo' => 33000],
                 ['linea' => 'L2 Bolsitas', 'valor' => 6400, 'costo' => 26000],
@@ -84,6 +89,8 @@ try {
             'alertas' => 0,
             'cant_clientes' => $totalClientes,
             'cant_productos' => $totalProductos,
+            'kpis_produccion_simulados' => true,
+            'kpis_maestros_simulados' => false,
             'rendimiento_lineas' => [
                 ['linea' => 'L1 Servilletas', 'valor' => 5000, 'costo' => 20000],
                 ['linea' => 'L2 Bolsitas', 'valor' => 5000, 'costo' => 20000],

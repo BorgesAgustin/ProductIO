@@ -136,9 +136,9 @@ Antes de modificar código:
 /
 ├── index.php
 ├── pages/
-│   ├── clientes.html
-│   ├── productos.html
-│   └── dashboard.html
+│   ├── clientes.php
+│   ├── productos.php
+│   └── dashboard.php
 ├── partials/
 │   ├── header.php
 │   ├── footer.php

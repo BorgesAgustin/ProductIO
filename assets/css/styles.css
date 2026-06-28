@@ -2579,3 +2579,18 @@ hr {
 .toast--danger {
   background-color: var(--color-danger);
 }
+
+/* ===========================================================
+   BLOCK: UTILITIES — Clases de Utilidad para Limpieza de Estilos Inline
+   =========================================================== */
+
+.table-wrapper--flat {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.col--actions {
+  width: 180px;
+  text-align: center;
+}

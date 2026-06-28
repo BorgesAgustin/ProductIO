@@ -1,9 +1,8 @@
 <?php
 $username = $_SESSION['nombre'] ?? 'Usuario';
-$role_label = 'Operario'; 
-if (isset($_SESSION['user_id'])) {
-    // If admin
-    if ($_SESSION['username'] === 'admin') {
+$role_label = 'Operario de Línea'; 
+if (isset($_SESSION['rol_fabrica'])) {
+    if ($_SESSION['rol_fabrica'] === 'admin') {
         $role_label = 'Administrador';
     } else {
         $role_label = 'Operario de Línea';

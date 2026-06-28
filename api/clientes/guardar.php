@@ -36,6 +36,11 @@ if (empty($nombre)) {
     exit;
 }
 
+if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode(['success' => false, 'error' => 'El formato de email no es válido.']);
+    exit;
+}
+
 try {
     if ($id) {
         // Actualizar cliente existente y validar que pertenezca a la misma fábrica para evitar alteraciones maliciosas

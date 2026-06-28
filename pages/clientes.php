@@ -17,14 +17,14 @@ include '../partials/sidebar.php';
 
 <!-- Tabla de Clientes -->
 <div class="card section-gap">
-  <div class="table-wrapper" style="border:none;box-shadow:none;border-radius:0">
+  <div class="table-wrapper table-wrapper--flat">
     <table class="data-table" id="tabla-clientes">
       <thead class="data-table__head">
         <tr>
           <th>Nombre</th>
           <th>Contacto</th>
           <th>Email</th>
-          <th style="width: 180px; text-align: center;">Acciones</th>
+          <th class="col--actions">Acciones</th>
         </tr>
       </thead>
       <tbody class="data-table__body" id="lista-clientes">
