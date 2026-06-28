@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNuevo = document.getElementById('btn-nuevo-producto');
     const modal = document.getElementById('modal-producto');
     const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnOverlayClose = document.getElementById('btn-overlay-close');
     const btnCancelar = document.getElementById('btn-cancelar');
     const formProducto = document.getElementById('form-producto');
 
     btnNuevo.addEventListener('click', () => abrirModal());
-    btnCloseModal.addEventListener('click', cerrarModal);
-    btnCancelar.addEventListener('click', cerrarModal);
+    if (btnCloseModal) btnCloseModal.addEventListener('click', cerrarModal);
+    if (btnOverlayClose) btnOverlayClose.addEventListener('click', cerrarModal);
+    if (btnCancelar) btnCancelar.addEventListener('click', cerrarModal);
     formProducto.addEventListener('submit', guardarProducto);
 });
 
@@ -30,7 +32,7 @@ let productosData = [];
 
 function cargarProductos() {
     const listBody = document.getElementById('lista-productos');
-    listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Cargando catálogo...</td></tr>`;
+    listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--color-text-muted); padding: var(--space-6);">Cargando catálogo...</td></tr>`;
 
     fetch('../api/productos/listar.php')
         .then(response => response.json())
@@ -40,13 +42,13 @@ function cargarProductos() {
                 renderizarProductos(productosData);
             } else {
                 window.ms.mostrarError(res.error || 'Error al cargar el catálogo de productos.');
-                listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">${res.error || 'Error al cargar catálogo.'}</td></tr>`;
+                listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--color-danger); padding: var(--space-6);">${res.error || 'Error al cargar catálogo.'}</td></tr>`;
             }
         })
         .catch(err => {
             console.error('Error de red:', err);
             window.ms.mostrarError('Error de red al conectar con el servidor.');
-            listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">Error de conexión de red.</td></tr>`;
+            listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--color-danger); padding: var(--space-6);">Error de conexión de red.</td></tr>`;
         });
 }
 
@@ -55,25 +57,29 @@ function renderizarProductos(productos) {
     listBody.innerHTML = '';
 
     if (productos.length === 0) {
-        listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay productos registrados en el catálogo de esta fábrica.</td></tr>`;
+        listBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--color-text-muted); padding: var(--space-8);">No hay productos registrados en el catálogo de esta fábrica.</td></tr>`;
         return;
     }
 
     productos.forEach(producto => {
         const tr = document.createElement('tr');
-        const badgeColor = producto.estado == 1 ? 'var(--success)' : 'var(--secondary)';
+        const badgeClass = producto.estado == 1 ? 'badge--enabled' : 'badge--disabled';
         const badgeLabel = producto.estado == 1 ? 'Activo' : 'Inactivo';
+        
+        // Determinar clase del chip de familia
+        const familiaLower = producto.familia.toLowerCase();
+        const familyChipClass = `family-chip--${familiaLower}`;
 
         tr.innerHTML = `
-            <td style="font-weight: 600; color: var(--primary);">${escapeHTML(producto.sku)}</td>
-            <td style="font-weight: 500;">${escapeHTML(producto.nombre)}</td>
-            <td><span style="font-size: 0.85rem; background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">${escapeHTML(producto.familia)}</span></td>
+            <td class="data-table__cell--mono">${escapeHTML(producto.sku)}</td>
+            <td class="data-table__cell--primary">${escapeHTML(producto.nombre)}</td>
+            <td><span class="family-chip ${familyChipClass}">${escapeHTML(producto.familia)}</span></td>
             <td>${producto.gramaje ? parseFloat(producto.gramaje).toLocaleString('es-AR') + ' g' : '<em class="text-muted">-</em>'}</td>
             <td>${producto.color ? escapeHTML(producto.color) : '<em class="text-muted">-</em>'}</td>
-            <td><span style="display: inline-block; padding: 0.25rem 0.6rem; border-radius: 20px; color: white; background-color: ${badgeColor}; font-size: 0.75rem; font-weight: 600;">${badgeLabel}</span></td>
-            <td class="actions-cell" style="justify-content: center;">
-                <button class="btn btn-secondary btn-sm" onclick="editarProducto(${producto.id})">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${producto.id})">Eliminar</button>
+            <td><span class="badge ${badgeClass}">${badgeLabel}</span></td>
+            <td class="data-table__cell--actions" style="justify-content: center;">
+                <button class="btn btn--secondary btn--sm" onclick="editarProducto(${producto.id})">Editar</button>
+                <button class="btn btn--danger btn--sm" onclick="eliminarProducto(${producto.id})">Eliminar</button>
             </td>
         `;
         listBody.appendChild(tr);
@@ -100,15 +106,14 @@ function abrirModal(producto = null) {
     } else {
         title.textContent = 'Nuevo Producto';
         document.getElementById('producto-id').value = '';
-        document.getElementById('producto-estado').value = '1';
     }
 
-    modal.classList.add('open');
+    modal.classList.add('modal--open');
 }
 
 function cerrarModal() {
     const modal = document.getElementById('modal-producto');
-    modal.classList.remove('open');
+    modal.classList.remove('modal--open');
 }
 
 function guardarProducto(e) {
@@ -124,7 +129,7 @@ function guardarProducto(e) {
     const estado = document.getElementById('producto-estado').value;
 
     if (!sku || !nombre || !familia) {
-        window.ms.mostrarError('Los campos SKU, Nombre y Familia son obligatorios.');
+        window.ms.mostrarError('Complete todos los campos obligatorios (*).');
         return;
     }
 
@@ -132,13 +137,13 @@ function guardarProducto(e) {
 
     fetch('../api/productos/guardar.php', {
         method: 'POST',
-        headers: { 'Content-Type: application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
     .then(response => response.json())
     .then(res => {
         if (res.success) {
-            window.ms.mostrarExito(res.message || 'Producto guardado correctamente.');
+            window.ms.mostrarExito(res.message || 'Producto guardado con éxito.');
             cerrarModal();
             cargarProductos();
         } else {
@@ -162,19 +167,19 @@ function eliminarProducto(id) {
     const producto = productosData.find(p => p.id == id);
     if (!producto) return;
 
-    if (confirm(`¿Estás seguro de eliminar el producto "${producto.nombre}" (${producto.sku}) del catálogo?`)) {
+    if (confirm(`¿Estás seguro de eliminar el producto "${producto.nombre}" (${producto.sku})?`)) {
         fetch('../api/productos/eliminar.php', {
             method: 'POST',
-            headers: { 'Content-Type: application/json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id })
         })
         .then(response => response.json())
         .then(res => {
             if (res.success) {
-                window.ms.mostrarExito(res.message || 'Producto eliminado correctamente.');
+                window.ms.mostrarExito(res.message || 'Producto eliminado con éxito.');
                 cargarProductos();
             } else {
-                window.ms.mostrarError(res.error || 'Error al eliminar producto.');
+                window.ms.mostrarError(res.error || 'Error al eliminar el producto.');
             }
         })
         .catch(err => {

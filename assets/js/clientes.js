@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNuevo = document.getElementById('btn-nuevo-cliente');
     const modal = document.getElementById('modal-cliente');
     const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnOverlayClose = document.getElementById('btn-overlay-close');
     const btnCancelar = document.getElementById('btn-cancelar');
     const formCliente = document.getElementById('form-cliente');
 
     btnNuevo.addEventListener('click', () => abrirModal());
-    btnCloseModal.addEventListener('click', cerrarModal);
-    btnCancelar.addEventListener('click', cerrarModal);
+    if (btnCloseModal) btnCloseModal.addEventListener('click', cerrarModal);
+    if (btnOverlayClose) btnOverlayClose.addEventListener('click', cerrarModal);
+    if (btnCancelar) btnCancelar.addEventListener('click', cerrarModal);
     formCliente.addEventListener('submit', guardarCliente);
 });
 
@@ -30,7 +32,7 @@ let clientesData = [];
 
 function cargarClientes() {
     const listBody = document.getElementById('lista-clientes');
-    listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando clientes...</td></tr>`;
+    listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--color-text-muted); padding: var(--space-6);">Cargando clientes...</td></tr>`;
 
     fetch('../api/clientes/listar.php')
         .then(response => response.json())
@@ -40,13 +42,13 @@ function cargarClientes() {
                 renderizarClientes(clientesData);
             } else {
                 window.ms.mostrarError(res.error || 'Error al listar clientes.');
-                listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--danger);">${res.error || 'Error al listar clientes.'}</td></tr>`;
+                listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--color-danger); padding: var(--space-6);">${res.error || 'Error al listar clientes.'}</td></tr>`;
             }
         })
         .catch(err => {
             console.error('Error de red:', err);
             window.ms.mostrarError('Error de red al conectar con el servidor.');
-            listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--danger);">Error de conexión de red.</td></tr>`;
+            listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--color-danger); padding: var(--space-6);">Error de conexión de red.</td></tr>`;
         });
 }
 
@@ -55,19 +57,19 @@ function renderizarClientes(clientes) {
     listBody.innerHTML = '';
 
     if (clientes.length === 0) {
-        listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay clientes registrados en esta fábrica.</td></tr>`;
+        listBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--color-text-muted); padding: var(--space-8);">No hay clientes registrados en esta fábrica.</td></tr>`;
         return;
     }
 
     clientes.forEach(cliente => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td style="font-weight: 500;">${escapeHTML(cliente.nombre)}</td>
+            <td class="data-table__cell--primary">${escapeHTML(cliente.nombre)}</td>
             <td>${cliente.contacto ? escapeHTML(cliente.contacto) : '<em class="text-muted">No asignado</em>'}</td>
             <td>${cliente.email ? escapeHTML(cliente.email) : '<em class="text-muted">No asignado</em>'}</td>
-            <td class="actions-cell" style="justify-content: center;">
-                <button class="btn btn-secondary btn-sm" onclick="editarCliente(${cliente.id})">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${cliente.id})">Eliminar</button>
+            <td class="data-table__cell--actions" style="justify-content: center;">
+                <button class="btn btn--secondary btn--sm" onclick="editarCliente(${cliente.id})">Editar</button>
+                <button class="btn btn--danger btn--sm" onclick="eliminarCliente(${cliente.id})">Eliminar</button>
             </td>
         `;
         listBody.appendChild(tr);
@@ -92,12 +94,12 @@ function abrirModal(cliente = null) {
         document.getElementById('cliente-id').value = '';
     }
 
-    modal.classList.add('open');
+    modal.classList.add('modal--open');
 }
 
 function cerrarModal() {
     const modal = document.getElementById('modal-cliente');
-    modal.classList.remove('open');
+    modal.classList.remove('modal--open');
 }
 
 function guardarCliente(e) {
@@ -117,7 +119,7 @@ function guardarCliente(e) {
 
     fetch('../api/clientes/guardar.php', {
         method: 'POST',
-        headers: { 'Content-Type: application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
     .then(response => response.json())
@@ -150,7 +152,7 @@ function eliminarCliente(id) {
     if (confirm(`¿Estás seguro de eliminar al cliente "${cliente.nombre}"?`)) {
         fetch('../api/clientes/eliminar.php', {
             method: 'POST',
-            headers: { 'Content-Type: application/json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id })
         })
         .then(response => response.json())
