@@ -2,7 +2,7 @@
  * assets/js/onboarding.js
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     cargarFabricas();
 });
 
@@ -59,12 +59,12 @@ function seleccionarFabrica(id) {
         method: 'POST',
         body: new URLSearchParams({ id: id })
     })
-    .then(r => r.json())
-    .then(res => {
-        if (res.success) {
-            window.location.href = 'dashboard.php';
-        } else {
-            window.ms.mostrarError(res.error);
-        }
-    });
+        .then(r => r.json())
+        .then(res => {
+            if (res.success) {
+                window.location.href = 'dashboard.php';
+            } else {
+                window.ms.mostrarError(res.error);
+            }
+        });
 }

@@ -1,9 +1,9 @@
 <?php
-// /config/database.php
-$host = 'pdb1049.awardspace.net';
-$db   = '3434352_productio';
-$user = '3434352_productio';
-$pass = 'PRODUCTio098*';
+// /config/database.php (LOCAL CONFIG FOR TESTING)
+$host = '127.0.0.1';
+$db   = 'productio';
+$user = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -17,7 +17,7 @@ try {
      $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
      header('Content-Type: application/json');
-     echo json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos']);
+     echo json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos: ' . $e->getMessage()]);
      exit;
 }
 ?>
