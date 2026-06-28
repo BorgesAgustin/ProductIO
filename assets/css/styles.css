@@ -1490,6 +1490,97 @@ hr {
   border-color: rgba(26, 32, 44, 0.25);
 }
 
+/* ===========================================================
+   BLOCK: .onboarding — Pantalla de Selección de Fábrica
+   =========================================================== */
+
+.onboarding-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  background-color: var(--color-surface-2);
+}
+
+.onboarding-page__inner {
+  max-width: 880px;
+  width: 100%;
+}
+
+.onboarding-page__header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.onboarding-page__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.onboarding-page__subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+}
+
+.fabricas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.fabrica-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow var(--transition-base),
+              transform var(--transition-base),
+              border-color var(--transition-base);
+}
+
+.fabrica-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+}
+
+.fabrica-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.fabrica-card__address {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.fabrica-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fabricas-grid__loading,
+.fabricas-grid__empty,
+.fabricas-grid__error {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-6);
+}
+
+.fabricas-grid__error {
+  color: var(--color-danger);
+}
 
 /* ===========================================================
    BLOCK: .family-chip — Product Family Chips
