@@ -1098,7 +1098,7 @@ hr {
 .sidebar__brand-logo {
   width: 36px;
   height: 36px;
-  background-color: var(--color-accent);
+  background-color: var(--color-primary-light);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -1106,7 +1106,7 @@ hr {
   flex-shrink: 0;
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-sm);
-  color: var(--color-primary);
+  color: #ffffff;
 }
 
 .sidebar__brand-text {
@@ -2501,7 +2501,7 @@ hr {
   justify-content: center;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-accent);
+  color: #ffffff;
 }
 
 .login-card__logo-text {}

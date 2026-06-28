@@ -19,7 +19,7 @@
         <div class="login-card">
             <!-- Logo -->
             <div class="login-card__logo">
-                <div class="login-card__logo-mark">PIO</div>
+                <div class="login-card__logo-mark">P</div>
                 <div class="login-card__logo-text">
                     <div class="login-card__logo-name">PRODUCT-IO</div>
                     <div class="login-card__logo-company">Papelera K&amp;A</div>

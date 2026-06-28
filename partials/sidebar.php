@@ -18,7 +18,7 @@ if (isset($_SESSION['nombre'])) {
 <aside class="sidebar" role="navigation" aria-label="Menú principal">
     <!-- Brand -->
     <a href="dashboard.php" class="sidebar__brand">
-      <div class="sidebar__brand-logo">PIO</div>
+      <div class="sidebar__brand-logo">P</div>
       <div class="sidebar__brand-text">
         <span class="sidebar__brand-name">PRODUCT-IO</span>
         <span class="sidebar__brand-tagline">Papelera K&amp;A</span>
