@@ -30,7 +30,7 @@ try {
      $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
      header('Content-Type: application/json');
-     echo json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos']);
+     echo json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos: ' . $e->getMessage()]);
      exit;
 }
 ?>
