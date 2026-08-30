@@ -2,7 +2,7 @@
  * assets/js/onboarding.js
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     cargarFabricas();
 });
 
@@ -16,7 +16,7 @@ function cargarFabricas() {
                 renderFabricas(res.data);
             } else {
                 window.ms.mostrarError(res.error || 'Error al cargar fábricas');
-                grid.innerHTML = `<p class="error">${res.error}</p>`;
+                grid.innerHTML = `<p class="fabricas-grid__error">${res.error}</p>`;
             }
         })
         .catch(err => {
@@ -29,7 +29,7 @@ function renderFabricas(fabricas) {
     grid.innerHTML = '';
 
     if (fabricas.length === 0) {
-        grid.innerHTML = '<p>No tienes fábricas asignadas. Contacta al administrador.</p>';
+        grid.innerHTML = '<p class="fabricas-grid__empty">No tienes fábricas asignadas. Contacta al administrador.</p>';
         return;
     }
 
@@ -37,12 +37,21 @@ function renderFabricas(fabricas) {
         const card = document.createElement('div');
         card.className = 'fabrica-card';
         card.innerHTML = `
-            <h3>${f.nombre}</h3>
-            <p>${f.direccion || 'Sin dirección'}</p>
+            <div class="fabrica-card__name">${f.nombre}</div>
+            <div class="fabrica-card__address">${f.direccion || 'Sin dirección'}</div>
+            <div class="fabrica-card__footer">${renderRoleBadge(f.rol)}</div>
         `;
         card.onclick = () => seleccionarFabrica(f.id);
         grid.appendChild(card);
     });
+}
+
+// Misma regla que partials/sidebar.php: solo 'admin' tiene la etiqueta de Administrador.
+function renderRoleBadge(rol) {
+    const esAdmin = rol === 'admin';
+    const clase = esAdmin ? 'role-badge--admin' : 'role-badge--operator';
+    const etiqueta = esAdmin ? 'Administrador' : 'Operario de Línea';
+    return `<span class="role-badge ${clase}">${etiqueta}</span>`;
 }
 
 function seleccionarFabrica(id) {
@@ -50,12 +59,12 @@ function seleccionarFabrica(id) {
         method: 'POST',
         body: new URLSearchParams({ id: id })
     })
-    .then(r => r.json())
-    .then(res => {
-        if (res.success) {
-            window.location.href = 'dashboard.html';
-        } else {
-            window.ms.mostrarError(res.error);
-        }
-    });
+        .then(r => r.json())
+        .then(res => {
+            if (res.success) {
+                window.location.href = 'dashboard.php';
+            } else {
+                window.ms.mostrarError(res.error);
+            }
+        });
 }

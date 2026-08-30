@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 
 try {
     $stmt = $pdo->prepare("
-        SELECT f.* FROM fabricas f
+        SELECT f.*, uf.rol FROM fabricas f
         JOIN usuario_fabricas uf ON f.id = uf.fabrica_id
         WHERE uf.usuario_id = ?
     ");

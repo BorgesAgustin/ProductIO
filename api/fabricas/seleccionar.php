@@ -7,6 +7,11 @@ session_start();
 
 header('Content-Type: application/json');
 
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['success' => false, 'error' => 'No autorizado']);
+    exit;
+}
+
 $id = $_POST['id'] ?? '';
 
 if (empty($id)) {
@@ -14,13 +19,15 @@ if (empty($id)) {
     exit;
 }
 
-// Validar que el usuario tiene acceso a esta fábrica
+// Validar que el usuario tiene acceso a esta fábrica y obtener su rol
 try {
-    $stmt = $pdo->prepare("SELECT 1 FROM usuario_fabricas WHERE usuario_id = ? AND fabrica_id = ?");
+    $stmt = $pdo->prepare("SELECT rol FROM usuario_fabricas WHERE usuario_id = ? AND fabrica_id = ?");
     $stmt->execute([$_SESSION['user_id'], $id]);
     
-    if ($stmt->fetch()) {
+    $row = $stmt->fetch();
+    if ($row) {
         $_SESSION['fabrica_id'] = $id;
+        $_SESSION['rol_fabrica'] = $row['rol'];
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'error' => 'No tiene acceso a esta fábrica']);
